@@ -141,14 +141,14 @@ except Exception:
     BROKER_URL = 'redis://'
 CELERY_RESULT_BACKEND = BROKER_URL
 
-# DEVELOPMENT
-DEBUG = True
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'movietix',
-        "HOST": "localhost",
-        "PORT": "",
-    }
-}
+# # DEVELOPMENT
+# DEBUG = True
+#
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'movietix',
+#         "HOST": "localhost",
+#         "PORT": "",
+#     }
+# }
