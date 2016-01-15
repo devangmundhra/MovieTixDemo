@@ -144,7 +144,7 @@ except Exception:
 CELERY_RESULT_BACKEND = BROKER_URL
 
 # # DEVELOPMENT
-# DEBUG = True
+DEBUG = True
 #
 # DATABASES = {
 #     'default': {
