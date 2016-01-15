@@ -29,7 +29,7 @@
         <td>{{ ticket.col_num }} </td>
         <td>{% if ticket.status == 1 %}AVAILABLE{% elif ticket.status == 2 %}BLOCKED{% else %}BOOKED{% endif %}</td>
         <td>{{ ticket.session }}</td>
-        <td>{{ ticket.updated_at|timesince }} ago</td>
+        <td>{{ ticket.created_at|timesince }} ago</td>
     </tr>
 {% endfor %}
 </tbody>

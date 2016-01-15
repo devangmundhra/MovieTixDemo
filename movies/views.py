@@ -82,8 +82,10 @@ def book_ticket(request, movie_id=None):
     try:
         existing_tix = Tickets.objects.get(row_num=ticket.row_num, col_num=ticket.col_num, movie=movie)
         if existing_tix.session == ticket.session or existing_tix.status == 1:
-            existing_tix.session = ticket.session
-            ticket = existing_tix
+            if existing_tix.status == 1:
+                existing_tix.delete()
+            else:
+                ticket = existing_tix
         else:
             return HttpResponseBadRequest("This ticket has already been reserved")
     except Tickets.DoesNotExist:

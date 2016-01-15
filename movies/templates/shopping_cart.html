@@ -22,7 +22,7 @@
         <td>{{ ticket.row_num }} </td>
         <td>{{ ticket.col_num }} </td>
         <td>{% if ticket.status == 1 %}AVAILABLE{% elif ticket.status == 2 %}BLOCKED{% else %}BOOKED{% endif %}</td>
-        <td>{{ ticket.updated_at|timesince }} ago</td>
+        <td>{{ ticket.created_at|timesince }} ago</td>
         <td>{% if ticket.status == 2 %}<a href="{% url 'modify_ticket' ticket.id 'book'%}">Book</a>{% else %} N/A{% endif %}</td>
         <td><a href="{% url 'modify_ticket' ticket.id 'cancel'%}">Cancel</a></td>
     </tr>
