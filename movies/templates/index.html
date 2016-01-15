@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+<h2>Movie Front Page</h2>
+<h3>Add a new movie</h3>
+<form action="/new_movie/" method="post" class="form-control">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Submit" />
+</form>
+<br/>
+<h3>Currently available movies to book:</h3><br>
+<table class="table">
+<thead>
+<tr>
+    <th>Movie Name</th>
+    <th># rows</th>
+    <th># columns</th>
+</tr>
+</thead>
+<tbody>
+{% for movie in current_movies %}
+    <tr>
+        <td><a href="{% url 'movie' movie.pk %}">{{ movie.name }}</a></td>
+        <td>{{ movie.rows }}</td>
+        <td>{{ movie.columns }}</td>
+    </tr>
+{% endfor %}
+</tbody>
+</table>
+{% endblock %}

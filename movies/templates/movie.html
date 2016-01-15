@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+<h2>{{movie.name}} with {{movie.rows}} rows and {{movie.columns}} columns</h2>
+<h3>Book or Block Ticket</h3>
+<form action="/book_ticket/{{movie.pk}}/" method="post" class="form-control">
+    {% csrf_token %}
+    {{ ticket_form }}
+    <input type="submit" name="block_tix" value="Block Tickets" />
+    <input type="submit" name="book_tix" value="Book Tickets" />
+</form>
+<br/>
+<h3>Tickets booked so far:</h3>
+<table class="table">
+<thead>
+<tr>
+    <th>Row #</th>
+    <th>Col #</th>
+    <th>Status</th>
+    <th>Session ID</th>
+    <th>Booking Time</th>
+</tr>
+</thead>
+<tbody>
+{% for ticket in tickets_booked %}
+    <tr>
+        <td>{{ ticket.row_num }} </td>
+        <td>{{ ticket.col_num }} </td>
+        <td>{% if ticket.status == 1 %}AVAILABLE{% elif ticket.status == 2 %}BLOCKED{% else %}BOOKED{% endif %}</td>
+        <td>{{ ticket.session }}</td>
+        <td>{{ ticket.updated_at|timesince }} ago</td>
+    </tr>
+{% endfor %}
+</tbody>
+</table>
+{% endblock %}
