@@ -137,7 +137,8 @@ STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 try:
     redis_url = urlparse.urlparse(os.environ.get('REDISCLOUD_URL'))
-    BROKER_URL = 'redis://:%s@%s:%s/0' % (redis_url.password, redis_url.hostname, redis_url.port)
+    # BROKER_URL = 'redis://:%s@%s:%s/0' % (redis_url.password, redis_url.hostname, redis_url.port)
+    BROKER_URL = 'redis://rediscloud:l8ia6x9syKRoU1nM@pub-redis-14090.us-east-1-3.1.ec2.garantiadata.com:14090'
 except Exception:
     BROKER_URL = 'redis://'
 CELERY_RESULT_BACKEND = BROKER_URL
